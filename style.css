@@ -40,6 +40,9 @@ h1 {
   width: 45vw;
   color: white;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .right-form {
@@ -164,4 +167,25 @@ input:focus {
   color: orangered;
   font-weight: 600;
   text-decoration: none;
+}
+
+.checkmark {
+  height: 150px;
+  width: 150px;
+  border: 5px solid rgb(16, 179, 16);
+  border-radius: 50%;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.checkmark-heading {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.checkmark-text {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgb(70, 70, 70);
+  text-align: center;
 }

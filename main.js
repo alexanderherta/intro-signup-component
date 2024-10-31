@@ -1,3 +1,4 @@
+const inputArea = document.querySelector(".input-area");
 const firstNameInput = document.querySelector("#first-name-input");
 const lastNameInput = document.querySelector("#last-name-input");
 const emailInput = document.querySelector("#email-input");
@@ -15,7 +16,7 @@ let isPasswordValid = false;
 function checkInput() {
   const firstName = firstNameInput.value;
   const firstNameRegex = /[^A-Za-z0-9]/;
-  if(!/\s/.test(firstName) && !firstNameRegex.test(firstName) && !/\d/.test(firstName) && firstName.length < 27) {
+  if(!/\s/.test(firstName) && !firstNameRegex.test(firstName) && !/\d/.test(firstName) && firstName.length < 27 && firstName != "") {
     isFirstNameValid = true;
     firstNameError.innerText = "";
     firstNameInput.style.borderColor = "rgba(0, 0, 0, 0.25)";
@@ -28,7 +29,7 @@ function checkInput() {
 
   const lastName = lastNameInput.value;
   const lastNameRegex = /[^A-Za-z0-9]/;
-  if(!/\s/.test(lastName) && !lastNameRegex.test(lastName) && !/\d/.test(lastName) && lastName.length < 27) {
+  if(!/\s/.test(lastName) && !lastNameRegex.test(lastName) && !/\d/.test(lastName) && lastName.length < 27 && lastName != "") {
     isLastNameValid = true;
     lastNameError.innerText = "";
     lastNameInput.style.borderColor = "rgba(0, 0, 0, 0.25)";
@@ -41,7 +42,7 @@ function checkInput() {
 
   const email = emailInput.value;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(emailRegex.test(email)) {
+  if(emailRegex.test(email) && email != "") {
     isEmailValid = true;
     emailError.innerText = "";
     emailInput.style.borderColor = "rgba(0, 0, 0, 0.25)";
@@ -53,7 +54,7 @@ function checkInput() {
   }
 
   const password = passwordInput.value;
-  if(!/\s/.test(password) && password.length < 41) {
+  if(!/\s/.test(password) && password.length < 41 && password != "") {
     isPasswordValid = true;
     passwordError.innerText = "";
     passwordInput.style.borderColor = "rgba(0, 0, 0, 0.25)";
@@ -70,5 +71,18 @@ function checkInput() {
 }
 
 function displayThankYou() {
-  alert("vaild input!");
+  inputArea.innerHTML = "";
+  const thankYouArea = document.createElement("div");
+  inputArea.appendChild(thankYouArea);
+  thankYouArea.style.height = "100%";
+  thankYouArea.style.width = "100%";
+  thankYouArea.style.border = "2px dashed black";
+  thankYouArea.style.borderRadius = "10px";
+  thankYouArea.style.padding = "25px";
+  thankYouArea.style.display = "flex";
+  thankYouArea.style.flexDirection = "column";
+  thankYouArea.style.alignItems = "center";
+  thankYouArea.innerHTML += `<img class="checkmark" src="./images/checkmark.png"></img>`;
+  thankYouArea.innerHTML += `<h4 class="checkmark-heading">Thank You!</h4>`;
+  thankYouArea.innerHTML += `<p class="checkmark-text">Your info has been submitted. Look out for our invite email!</p>`;
 }
